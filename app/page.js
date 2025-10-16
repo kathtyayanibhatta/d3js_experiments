@@ -1,8 +1,11 @@
 "use client";
 
 import VariableSemiPie from "../app/components/VariableSemiPie";
-import ParliamentChart from "../app/components/ParliamentChart";
-import PyramidChart from "../app/components/PyramidChart"; // Pyramid Chart is Chart 3
+import ParliamentChart from "../app/components/RainbowParliamentChart";
+import PyramidChart from "../app/components/PyramidChart";
+import LollipopChart from "../app/components/LollipopChart";
+import GradientColumnChart from "../app/components/GradientColumnChart";
+import CappedClusteredColumnChart from "../app/components/CappedClusteredColumnChart"; // Capped Chart Import
 import React from "react";
 
 // --- DATASETS ---
@@ -69,6 +72,29 @@ const pyramidData = [
   { group: "56+", male: 30, female: 40 },
 ];
 
+// Data for the Lollipop Chart (Chart 4)
+const lollipopData = [
+  { group: "Product A", q1: 45, q2: 60 },
+  { group: "Product B", q1: 70, q2: 55 },
+  { group: "Product C", q1: 30, q2: 80 },
+  { group: "Product D", q1: 55, q2: 75 },
+];
+
+// Data for the Gradient Column Chart (Chart 5)
+const gradientChartData = [
+  { group: "Q1", sales: 120, profit: 85 },
+  { group: "Q2", sales: 150, profit: 100 },
+  { group: "Q3", sales: 90, profit: 60 },
+  { group: "Q4", sales: 180, profit: 130 },
+];
+
+// Data for the Capped Clustered Column Chart (Chart 6)
+const cappedChartData = [
+  { group: "Project X", sliceA: 70, sliceB: 30, capValue: 110 },
+  { group: "Project Y", sliceA: 55, sliceB: 45, capValue: 100 },
+  { group: "Project Z", sliceA: 90, sliceB: 20, capValue: 120 },
+];
+
 export default function HomePage() {
   return (
     <div
@@ -91,53 +117,101 @@ export default function HomePage() {
         Interactive Data Visualization Dashboard
       </h1>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-evenly", // Distribute space evenly for three items
-          flexWrap: "wrap",
-          gap: "40px",
-          maxWidth: "1600px", // Increased max width to fit three charts comfortably
-          margin: "0 auto",
-        }}
-      >
-        {/* Chart 1: Variable Radius Semi-Pie */}
+      <div style={{ maxWidth: "1600px", margin: "0 auto" }}>
+        {/* --- FIRST ROW: 3 Charts --- */}
         <div
           style={{
-            flex: "1 1 450px", // Allows up to 3 charts per row on wide screens
-            minWidth: "350px",
-            borderRadius: "12px",
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+            display: "flex",
+            justifyContent: "space-evenly",
+            flexWrap: "wrap",
+            gap: "40px",
+            marginBottom: "40px", // Spacing before the next row
           }}
         >
-          <VariableSemiPie data={semiPieData} />
+          {/* Chart 1: Variable Radius Semi-Pie */}
+          <div
+            style={{
+              flex: "1 1 450px",
+              minWidth: "350px",
+              borderRadius: "12px",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+            }}
+          >
+            <VariableSemiPie data={semiPieData} />
+          </div>
+
+          {/* Chart 2: Parliament Chart */}
+          <div
+            style={{
+              flex: "1 1 450px",
+              minWidth: "350px",
+              borderRadius: "12px",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+            }}
+          >
+            <ParliamentChart
+              data={parliamentData}
+              totalSeats={totalParliamentSeats}
+            />
+          </div>
+
+          {/* Chart 3: Pyramid Chart (Clustered Triangular Column) */}
+          <div
+            style={{
+              flex: "1 1 450px",
+              minWidth: "350px",
+              borderRadius: "12px",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+            }}
+          >
+            <PyramidChart data={pyramidData} />
+          </div>
         </div>
 
-        {/* Chart 2: Parliament Chart (Custom Colors) */}
+        {/* --- SECOND ROW: 3 Charts (Lollipop, Gradient Column, and Capped Column) --- */}
         <div
           style={{
-            flex: "1 1 450px",
-            minWidth: "350px",
-            borderRadius: "12px",
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+            display: "flex",
+            justifyContent: "space-evenly",
+            flexWrap: "wrap",
+            gap: "40px",
           }}
         >
-          <ParliamentChart
-            data={parliamentData}
-            totalSeats={totalParliamentSeats}
-          />
-        </div>
+          {/* Chart 4: Lollipop Chart */}
+          <div
+            style={{
+              flex: "1 1 450px",
+              minWidth: "350px",
+              borderRadius: "12px",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+            }}
+          >
+            <LollipopChart data={lollipopData} />
+          </div>
 
-        {/* Chart 3: Pyramid Chart (Clustered Bar Graph) */}
-        <div
-          style={{
-            flex: "1 1 450px",
-            minWidth: "350px",
-            borderRadius: "12px",
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-          }}
-        >
-          <PyramidChart data={pyramidData} />
+          {/* Chart 5: Gradient Column Chart */}
+          <div
+            style={{
+              flex: "1 1 450px",
+              minWidth: "350px",
+              borderRadius: "12px",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+            }}
+          >
+            <GradientColumnChart data={gradientChartData} />
+          </div>
+
+          {/* Chart 6: Capped Clustered Column Chart */}
+          <div
+            style={{
+              flex: "1 1 450px",
+              minWidth: "350px",
+              borderRadius: "12px",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+            }}
+          >
+            <CappedClusteredColumnChart data={cappedChartData} />
+          </div>
         </div>
       </div>
 
@@ -148,10 +222,12 @@ export default function HomePage() {
           padding: "20px",
           backgroundColor: "#eef2ff",
           borderRadius: "8px",
+          maxWidth: "1600px",
+          margin: "60px auto 0",
         }}
       >
         <p style={{ fontSize: "1.1em", color: "#333" }}>
-          This dashboard compares three distinct visualization types:
+          This dashboard now compares six distinct visualization types:
           <br />
           1. **Variable Semi-Pie:** Uses angle and radius to represent two
           dimensions of data.
@@ -159,9 +235,17 @@ export default function HomePage() {
           2. **Parliament Chart:** A radial plot showing discrete seat
           distribution.
           <br />
-          3. **Clustered Pyramid Chart:** A unique bar chart layout used to
-          compare two clustered categories (Male/Female) across different groups
-          (Age).
+          3. **Clustered Triangular Chart:** A vertical clustered bar chart
+          using triangular shapes.
+          <br />
+          4. **Lollipop Chart:** A clustered column chart using minimal lines
+          and circles for a clean comparison.
+          <br />
+          5. **Gradient Column Chart:** A clustered column chart featuring a
+          vertical color fade (dark at top, light at bottom).
+          <br />
+          6. **Capped Clustered Column Chart:** A clustered column chart with
+          sliced bars and a distinct cap representing the goal or total.
         </p>
       </div>
     </div>
