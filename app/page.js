@@ -2,12 +2,12 @@
 
 import VariableSemiPie from "../app/components/VariableSemiPie";
 import ParliamentChart from "../app/components/ParliamentChart";
-import RainbowParliamentChart from "../app/components/RainbowParliamentChart"; // Added Rainbow Chart
+import PyramidChart from "../app/components/PyramidChart"; // Pyramid Chart is Chart 3
 import React from "react";
 
 // --- DATASETS ---
 
-// Data for the Variable Semi-Pie Chart
+// Data for the Variable Semi-Pie Chart (Chart 1)
 const semiPieData = [
   {
     category: "Apples",
@@ -47,7 +47,7 @@ const semiPieData = [
   },
 ];
 
-// Data for the FIRST Parliament Chart (Custom Colors)
+// Data for the Parliament Chart (Chart 2)
 const parliamentData = [
   { category: "Party A", seats: 200 },
   { category: "Party B", seats: 150 },
@@ -61,15 +61,13 @@ const parliamentData = [
 ];
 const totalParliamentSeats = 543;
 
-// Data for the SECOND Parliament Chart (Rainbow Colors)
-const rainbowParliamentData = [
-  { category: "Coalition Alpha", seats: 250 },
-  { category: "Opposition Beta", seats: 180 },
-  { category: "Independents P1", seats: 50 },
-  { category: "Independents P2", seats: 35 },
-  { category: "Minor Group", seats: 18 },
+// Data for the Pyramid Chart (Chart 3)
+const pyramidData = [
+  { group: "0-18", male: 50, female: 45 },
+  { group: "19-35", male: 80, female: 75 },
+  { group: "36-55", male: 60, female: 65 },
+  { group: "56+", male: 30, female: 40 },
 ];
-const rainbowTotalSeats = 533;
 
 export default function HomePage() {
   return (
@@ -90,7 +88,7 @@ export default function HomePage() {
           color: "#1e3a8a",
         }}
       >
-        Interactive Radial Charts Dashboard
+        Interactive Data Visualization Dashboard
       </h1>
 
       <div
@@ -130,7 +128,7 @@ export default function HomePage() {
           />
         </div>
 
-        {/* Chart 3: Second Parliament Chart (Rainbow View) */}
+        {/* Chart 3: Pyramid Chart (Clustered Bar Graph) */}
         <div
           style={{
             flex: "1 1 450px",
@@ -139,10 +137,7 @@ export default function HomePage() {
             boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
           }}
         >
-          <RainbowParliamentChart
-            data={rainbowParliamentData}
-            totalSeats={rainbowTotalSeats}
-          />
+          <PyramidChart data={pyramidData} />
         </div>
       </div>
 
@@ -156,16 +151,17 @@ export default function HomePage() {
         }}
       >
         <p style={{ fontSize: "1.1em", color: "#333" }}>
-          This dashboard compares three types of radial data visualization:
+          This dashboard compares three distinct visualization types:
           <br />
-          1. **Variable Semi-Pie:** Uses data to control both the angle and the
-          radial depth of each slice.
+          1. **Variable Semi-Pie:** Uses angle and radius to represent two
+          dimensions of data.
           <br />
-          2. **Parliament Chart (Left):** Uses a custom, repeating color palette
-          for party representation.
+          2. **Parliament Chart:** A radial plot showing discrete seat
+          distribution.
           <br />
-          3. **Parliament Chart (Right - Rainbow):** Uses a **D3 Interpolate
-          Rainbow** color scale for a continuous, highly contrasting look.
+          3. **Clustered Pyramid Chart:** A unique bar chart layout used to
+          compare two clustered categories (Male/Female) across different groups
+          (Age).
         </p>
       </div>
     </div>
