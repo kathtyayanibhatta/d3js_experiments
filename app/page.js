@@ -5,6 +5,7 @@ import ParliamentChart from "../app/components/RainbowParliamentChart";
 import PyramidChart from "../app/components/PyramidChart";
 import LollipopChart from "../app/components/LollipopChart";
 import GradientColumnChart from "../app/components/GradientColumnChart";
+import CompassPieChart from "../app/components/CompassPieChart";
 import CappedClusteredColumnChart from "../app/components/CappedClusteredColumnChart"; // Capped Chart Import
 import React from "react";
 
@@ -95,6 +96,15 @@ const cappedChartData = [
   { group: "Project Z", sliceA: 90, sliceB: 20, capValue: 120 },
 ];
 
+// Data for the Compass Pie Chart (Chart 7)
+const compassPieData = [
+  { category: "Category A", value: 40, size: 100 },
+  { category: "Category B", value: 20, size: 60 },
+  { category: "Category C", value: 30, size: 80 },
+  { category: "Category D", value: 10, size: 40 },
+  { category: "Category E", value: 50, size: 120 },
+];
+
 export default function HomePage() {
   return (
     <div
@@ -125,7 +135,7 @@ export default function HomePage() {
             justifyContent: "space-evenly",
             flexWrap: "wrap",
             gap: "40px",
-            marginBottom: "40px", // Spacing before the next row
+            marginBottom: "40px",
           }}
         >
           {/* Chart 1: Variable Radius Semi-Pie */}
@@ -168,13 +178,14 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* --- SECOND ROW: 3 Charts (Lollipop, Gradient Column, and Capped Column) --- */}
+        {/* --- SECOND ROW: 3 Charts --- */}
         <div
           style={{
             display: "flex",
             justifyContent: "space-evenly",
             flexWrap: "wrap",
             gap: "40px",
+            marginBottom: "40px",
           }}
         >
           {/* Chart 4: Lollipop Chart */}
@@ -213,6 +224,28 @@ export default function HomePage() {
             <CappedClusteredColumnChart data={cappedChartData} />
           </div>
         </div>
+
+        {/* --- THIRD ROW: 1 Chart (Compass Pie Chart) --- */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center", // Center the single chart
+            flexWrap: "wrap",
+            gap: "40px",
+          }}
+        >
+          {/* Chart 7: Compass Pie Chart */}
+          <div
+            style={{
+              flex: "0 1 500px", // Fixed width for a single, centered chart
+              minWidth: "400px",
+              borderRadius: "12px",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+            }}
+          >
+            <CompassPieChart data={compassPieData} />
+          </div>
+        </div>
       </div>
 
       {/* Legend/Notes */}
@@ -227,7 +260,7 @@ export default function HomePage() {
         }}
       >
         <p style={{ fontSize: "1.1em", color: "#333" }}>
-          This dashboard now compares six distinct visualization types:
+          This dashboard now compares seven distinct visualization types:
           <br />
           1. **Variable Semi-Pie:** Uses angle and radius to represent two
           dimensions of data.
@@ -246,6 +279,9 @@ export default function HomePage() {
           <br />
           6. **Capped Clustered Column Chart:** A clustered column chart with
           sliced bars and a distinct cap representing the goal or total.
+          <br />
+          7. **Compass Pie Chart:** A variable radius pie chart with integrated
+          pointers and labels around the circumference.
         </p>
       </div>
     </div>
