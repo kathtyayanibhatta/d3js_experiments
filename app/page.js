@@ -6,7 +6,8 @@ import PyramidChart from "../app/components/PyramidChart";
 import LollipopChart from "../app/components/LollipopChart";
 import GradientColumnChart from "../app/components/GradientColumnChart";
 import CompassPieChart from "../app/components/CompassPieChart";
-import CappedClusteredColumnChart from "../app/components/CappedClusteredColumnChart"; // Capped Chart Import
+import CappedClusteredColumnChart from "../app/components/CappedClusteredColumnChart";
+import MultiLineChart from "../app/components/MultiLineChart";
 import React from "react";
 
 // --- DATASETS ---
@@ -104,6 +105,23 @@ const compassPieData = [
   { category: "Category D", value: 10, size: 40 },
   { category: "Category E", value: 50, size: 120 },
 ];
+
+// NEW Data for Multi-Line Chart
+const mockLineData = [
+  { date: "2024-01-01", Sales: 50, Clicks: 300, Revenue: 2500 },
+  { date: "2024-02-01", Sales: 55, Clicks: 320, Revenue: 2800 },
+  { date: "2024-03-01", Sales: 62, Clicks: 350, Revenue: 3100 },
+  { date: "2024-04-01", Sales: 70, Clicks: 410, Revenue: 3500 },
+  { date: "2024-05-01", Sales: 81, Clicks: 490, Revenue: 4000 },
+  { date: "2024-06-01", Sales: 78, Clicks: 470, Revenue: 3800 },
+  { date: "2024-07-01", Sales: 95, Clicks: 550, Revenue: 4800 },
+  { date: "2024-08-01", Sales: 105, Clicks: 610, Revenue: 5500 },
+  { date: "2024-09-01", Sales: 110, Clicks: 650, Revenue: 5800 },
+  { date: "2024-10-01", Sales: 115, Clicks: 680, Revenue: 6000 },
+  { date: "2024-11-01", Sales: 125, Clicks: 750, Revenue: 6500 },
+  { date: "2024-12-01", Sales: 130, Clicks: 800, Revenue: 7000 },
+];
+const lineChartKeys = ["Sales", "Clicks", "Revenue"];
 
 export default function HomePage() {
   return (
@@ -245,6 +263,18 @@ export default function HomePage() {
           >
             <CompassPieChart data={compassPieData} />
           </div>
+
+          <div
+            style={{
+              flex: "1 1 450px",
+              minWidth: "350px",
+              borderRadius: "12px",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)", // Shadow handled in the component div
+            }}
+          >
+            {/* The actual component is now used */}
+            <MultiLineChart data={mockLineData} keys={lineChartKeys} />
+          </div>
         </div>
       </div>
 
@@ -258,32 +288,7 @@ export default function HomePage() {
           maxWidth: "1600px",
           margin: "60px auto 0",
         }}
-      >
-        <p style={{ fontSize: "1.1em", color: "#333" }}>
-          This dashboard now compares seven distinct visualization types:
-          <br />
-          1. **Variable Semi-Pie:** Uses angle and radius to represent two
-          dimensions of data.
-          <br />
-          2. **Parliament Chart:** A radial plot showing discrete seat
-          distribution.
-          <br />
-          3. **Clustered Triangular Chart:** A vertical clustered bar chart
-          using triangular shapes.
-          <br />
-          4. **Lollipop Chart:** A clustered column chart using minimal lines
-          and circles for a clean comparison.
-          <br />
-          5. **Gradient Column Chart:** A clustered column chart featuring a
-          vertical color fade (dark at top, light at bottom).
-          <br />
-          6. **Capped Clustered Column Chart:** A clustered column chart with
-          sliced bars and a distinct cap representing the goal or total.
-          <br />
-          7. **Compass Pie Chart:** A variable radius pie chart with integrated
-          pointers and labels around the circumference.
-        </p>
-      </div>
+      ></div>
     </div>
   );
 }
