@@ -9,6 +9,7 @@ import CompassPieChart from "../app/components/CompassPieChart";
 import CappedClusteredColumnChart from "../app/components/CappedClusteredColumnChart";
 import MultiLineChart from "../app/components/MultiLineChart";
 import React from "react";
+import LollipopChart2 from "./components/LollipopChart2";
 
 // --- DATASETS ---
 
@@ -80,6 +81,13 @@ const lollipopData = [
   { group: "Product B", q1: 70, q2: 55 },
   { group: "Product C", q1: 30, q2: 80 },
   { group: "Product D", q1: 55, q2: 75 },
+];
+
+const lollipopData2 = [
+  { group: "Product A", q1: 45, q2: -60 },
+  { group: "Product B", q1: 70, q2: 55 },
+  { group: "Product C", q1: 30, q2: 80 },
+  { group: "Product D", q1: 55, q2: -75 },
 ];
 
 // Data for the Gradient Column Chart (Chart 5)
@@ -216,6 +224,18 @@ export default function HomePage() {
             }}
           >
             <LollipopChart data={lollipopData} />
+          </div>
+
+          {/* Chart 4: Lollipop Chart */}
+          <div
+            style={{
+              flex: "1 1 450px",
+              minWidth: "350px",
+              borderRadius: "12px",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+            }}
+          >
+            <LollipopChart2 data={lollipopData2} />
           </div>
 
           {/* Chart 5: Gradient Column Chart */}
